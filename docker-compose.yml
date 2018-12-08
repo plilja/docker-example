@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+    service-name-registry:
+        build: ./service-name-registry
+        ports:
+            - "5000:80"
+
+    service-hello:
+        build: ./service-hello
+        ports:
+            - "5001:80"
+        depends_on:
+            - service-name-registry
+            - db
+
+    db:
+        image: postgres
+        ports:
+            - "5002:5432"
+        environment:
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: namesdb

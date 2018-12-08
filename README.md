@@ -1,2 +1,3 @@
 # docker-example
-Docker example micro service setup
+
+Example project of a Docker setup with two micro services. One of the services is connected to a database.
