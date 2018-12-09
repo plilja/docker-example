@@ -4,12 +4,14 @@ services:
     service-name-registry:
         build: ./service-name-registry
         ports:
-            - "5000:80"
+            - "3001:80"
+            - "5001:5001"
 
     service-hello:
         build: ./service-hello
         ports:
-            - "5001:80"
+            - "3002:80"
+            - "5002:5002"
         depends_on:
             - service-name-registry
             - db
@@ -17,7 +19,7 @@ services:
     db:
         image: postgres
         ports:
-            - "5002:5432"
+            - "3003:5432"
         environment:
             POSTGRES_USER: user
             POSTGRES_PASSWORD: password
